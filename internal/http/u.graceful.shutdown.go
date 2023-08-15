@@ -30,8 +30,7 @@ func gracefulShutdown(h *HTTP) {
 		h.l.Error(logGS, "shutdown error:", err)
 		defer os.Exit(1)
 		return
-	} else {
-		h.l.Info(``, `gracefully stopped`)
 	}
+	h.l.Info(``, `gracefully stopped`)
 	defer os.Exit(0)
 }

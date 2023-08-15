@@ -15,7 +15,7 @@ func main(){
     }
 
     server, _ := gdown.HTTPNewServerWithHandler(handler)
-    if err := server.ListenAndServe(); err != nil {
+    if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
         panic(err)
     }
 }
