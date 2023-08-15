@@ -25,6 +25,7 @@ func main(){
 ### Использование альтернативной реализации логгера:
 ```
 import (
+    "github.com/jhekau/gdown"
     "github.com/jhekau/gdown/pkg/core/models/logger"
 )
 
