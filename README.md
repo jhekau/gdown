@@ -3,7 +3,7 @@
 
 
 ### Как использовать?
-```
+```Go
 import (
     "net/http"
     "github.com/jhekau/gdown"
@@ -23,7 +23,7 @@ func main(){
 ```
 
 ### Использование альтернативной реализации логгера:
-```
+```Go
 import (
     "github.com/jhekau/gdown"
     "github.com/jhekau/gdown/pkg/core/models/logger"
