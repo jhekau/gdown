@@ -39,5 +39,5 @@ settings.Logger(YourLogger)
 
 #### Chapters
 
-- v0.0.1: create HTTPNewServerWithHandler;
+- v0.0.1: add HTTPNewServerWithHandler;
 - v0.0.0: create;
