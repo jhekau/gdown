@@ -11,5 +11,4 @@ import(
 // graceful shutdown http server
 // останавливает приём новых http запросов и ждёт завершения уже обрабатываемых запросов
 var HTTPNewServerWithHandler = http_.NewServerWithHandler
-var HTTP = func(){}
 
