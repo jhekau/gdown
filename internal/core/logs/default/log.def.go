@@ -6,17 +6,18 @@ package logger_default
  */
 import (
 	"fmt"
+	"log"
 )
 
 type Logger struct{}
 
-func (l *Logger) Info(path string, messages ...interface{}) error {
-	return fmt.Errorf("[%s] %s %v", `info`, path, fmt.Sprint(messages...))
+func (l *Logger) Info(path string, msg ...any) {
+	log.Println(fmt.Sprintf("[%s] %s %v: ", `info`, path, fmt.Sprint(msg...)))
 }
-func (l *Logger) Alert(path string, messages ...interface{}) error {
-	return fmt.Errorf("[%s] %s %v", `alert`, path, fmt.Sprint(messages...))
+func (l *Logger) Warn(path string, msg ...any) error {
+	log.Println(fmt.Sprintf("[%s] %s %v: ", `alert`, path, fmt.Sprint(msg...)))
 }
-func (l *Logger) Error(path string, messages ...interface{}) error {
-	return fmt.Errorf("[%s] %s %v", `error`, path, fmt.Sprint(messages...))
+func (l *Logger) Error(path string, msg ...any) error {
+	log.Println(fmt.Sprintf("[%s] %s %v: ", `error`, path, fmt.Sprint(msg...)))
 }
 
