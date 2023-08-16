@@ -18,7 +18,8 @@ func gracefulShutdown(h *HTTP) {
 	h.l.Info(``, `shutting down...`)
 
 	if atomic.LoadInt32(&h.sCtrl.c) > h.incSignalMax {
-		log.Fatal(h.l.Info(``, `terminating...`))
+		h.l.Info(``, `terminating...`)
+		log.Fatalln(logGS, `terminating...`)
 	}
 	atomic.AddInt32(&h.sCtrl.c, 1)
 	h.cCtrl.stopWait()

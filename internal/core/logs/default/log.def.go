@@ -14,10 +14,10 @@ type Logger struct{}
 func (l *Logger) Info(path string, msg ...any) {
 	log.Println(fmt.Sprintf("[%s] %s %v: ", `info`, path, fmt.Sprint(msg...)))
 }
-func (l *Logger) Warn(path string, msg ...any) error {
+func (l *Logger) Warn(path string, msg ...any) {
 	log.Println(fmt.Sprintf("[%s] %s %v: ", `alert`, path, fmt.Sprint(msg...)))
 }
-func (l *Logger) Error(path string, msg ...any) error {
+func (l *Logger) Error(path string, msg ...any) {
 	log.Println(fmt.Sprintf("[%s] %s %v: ", `error`, path, fmt.Sprint(msg...)))
 }
 

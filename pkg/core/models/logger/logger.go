@@ -8,6 +8,6 @@ import()
 
 type Logger interface {
 	Info(path string, arg ...any)
-	Alert(path string, arg ...any)
+	Warn(path string, arg ...any)
 	Error(path string, arg ...any)
 }
