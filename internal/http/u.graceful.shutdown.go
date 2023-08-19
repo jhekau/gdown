@@ -26,16 +26,16 @@ fmt.Println(h, atomic.LoadInt32(&h.sCtrl.c))
 	atomic.AddInt32(&h.sCtrl.c, 1)
 	
 	h.l.Info(``, `shutting down...`)
-	h.cCtrl.stopWait()
-
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
 
 	go func(){
 		time.Sleep(time.Duration(h.sCtrl.timeout)*time.Second)
 		h.l.Info(``, `timeout shutdown...`)
 		os.Exit(0)
 	}()
+	h.cCtrl.stopWait()
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 	
 	if err := h.serv.Shutdown(ctx); err != nil {
 		h.l.Error(logGS, "shutdown error:", err)
