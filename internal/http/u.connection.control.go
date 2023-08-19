@@ -27,11 +27,11 @@ func (c *connectControl) newReq() bool {
 func (c *connectControl) serverOnStateChange(conn net.Conn, state http.ConnState) {
     switch state {
     case http.StateNew:
+		atomic.AddInt64(&c.c, +1)
 		fmt.Println(`debug [+++]: gdown\internal\http\u.connection.control.go `, atomic.LoadInt64(&c.c), atomic.LoadInt32(&c.stop))
-        atomic.AddInt64(&c.c, +1)
     case http.StateHijacked, http.StateClosed:
+		atomic.AddInt64(&c.c, -1)
 		fmt.Println(`debug [---]: gdown\internal\http\u.connection.control.go `, atomic.LoadInt64(&c.c), atomic.LoadInt32(&c.stop))
-        atomic.AddInt64(&c.c, -1)
     }
 }
 
