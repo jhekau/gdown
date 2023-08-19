@@ -5,10 +5,11 @@ package http
  * 14 August 2023
  */
 import (
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
-	
+
 	"github.com/jhekau/gdown/pkg/core/models/logger"
 )
 
@@ -56,7 +57,7 @@ func (h *HTTP) newServerWithHandler( fn http.HandlerFunc, ) *http.Server {
 	h.serv.ConnState = h.cCtrl.serverOnStateChange
 
 	h.serv.Handler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
+fmt.Println(` -----> debug -----> internal\http\u.http.go `, r.Header, r.Method, r.URL.Path, r.UserAgent())
 		// conncetion control
 		if !h.cCtrl.newReq() {
 			w.WriteHeader(h.httpStopCode)
