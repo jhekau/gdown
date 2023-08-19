@@ -6,7 +6,6 @@ package http
  */
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 	"sync/atomic"
@@ -16,8 +15,6 @@ import (
 const logGS = `github.com/jhekau/gdown/internal/http/graceful.shutdown.go`
 
 func gracefulShutdown(h *HTTP) {
-
-fmt.Println(h, atomic.LoadInt32(&h.sCtrl.c))
 
 	if atomic.LoadInt32(&h.sCtrl.c) > h.incSignalMax {
 		h.l.Info(``, `terminating...`)
