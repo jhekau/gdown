@@ -28,10 +28,14 @@ fmt.Println(h, atomic.LoadInt32(&h.sCtrl.c))
 	h.l.Info(``, `shutting down...`)
 	h.cCtrl.stopWait()
 
-	ctx, cancel := context.WithTimeout(
-		context.Background(), time.Duration(h.sCtrl.timeout)*time.Second )
-
+	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	go func(){
+		time.Sleep(time.Duration(h.sCtrl.timeout)*time.Second)
+		h.l.Info(``, `timeout shutdown...`)
+		os.Exit(0)
+	}()
 	
 	if err := h.serv.Shutdown(ctx); err != nil {
 		h.l.Error(logGS, "shutdown error:", err)
