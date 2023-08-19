@@ -47,3 +47,7 @@ func (s *settings) setDefault() {
 	s.h.incSignalMax = defSignalMax
 	s.h.httpStopCode = defStopCode
 }
+
+func (s *settings) setTimeout(sec int) {
+	s.h.sCtrl.timeout = sec
+}
