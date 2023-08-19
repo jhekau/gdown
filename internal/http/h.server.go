@@ -21,7 +21,8 @@ func NewServerWithHandler( fn http.HandlerFunc ) (*http.Server, *settings) {
 	s.setDefault()
 
 	h.signalInit(
-		syscall.SIGKILL, syscall.SIGTERM, // pid package
+		syscall.SIGKILL,
+		syscall.SIGTERM, // pid package
 		syscall.SIGHUP,  // kill -SIGHUP XXXX
 		syscall.SIGINT,  // kill -SIGINT XXXX or Ctrl+c
 		syscall.SIGQUIT, // kill -SIGQUIT XXXX

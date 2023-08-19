@@ -6,25 +6,31 @@ package http
  */
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"sync/atomic"
+	"time"
 )
 
 const logGS = `github.com/jhekau/gdown/internal/http/graceful.shutdown.go`
 
 func gracefulShutdown(h *HTTP) {
 
-	h.l.Info(``, `shutting down...`)
+fmt.Println(h, atomic.LoadInt32(&h.sCtrl.c))
 
 	if atomic.LoadInt32(&h.sCtrl.c) > h.incSignalMax {
 		h.l.Info(``, `terminating...`)
 		log.Fatalln(logGS, `terminating...`)
 	}
 	atomic.AddInt32(&h.sCtrl.c, 1)
+	
+	h.l.Info(``, `shutting down...`)
 	h.cCtrl.stopWait()
 
-	ctx, cancel := context.WithCancel(context.Background())
+	ctx, cancel := context.WithTimeout(
+		context.Background(), time.Duration(h.sCtrl.timeout)*time.Second )
+
 	defer cancel()
 	
 	if err := h.serv.Shutdown(ctx); err != nil {
@@ -32,6 +38,5 @@ func gracefulShutdown(h *HTTP) {
 		defer os.Exit(1)
 		return
 	}
-	h.l.Info(``, `gracefully stopped`)
 	defer os.Exit(0)
 }
