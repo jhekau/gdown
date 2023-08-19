@@ -25,6 +25,7 @@ func (c *connectControl) newReq() bool {
 
 // икрементирует или дикрементирует кол-во запросов, добавляем в сервер
 func (c *connectControl) serverOnStateChange(conn net.Conn, state http.ConnState) {
+	fmt.Println(`debug [change] gdown\internal\http\u.connection.control.go `, state)
     switch state {
     case http.StateNew:
 		atomic.AddInt64(&c.c, +1)
