@@ -38,6 +38,13 @@ settings.Logger(YourLogger)
 ```
 
 #### Chapters
-
+- v0.0.3: working version;
+- v0.0.2: fix, test, debug;
 - v0.0.1: add HTTPNewServerWithHandler;
 - v0.0.0: create;
+
+
+#### TODO`s
+- [ ] idle, active - add setting, add logic;
+- [ ] doc local;
+- [ ] doc other;
