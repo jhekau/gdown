@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"syscall"
 
-	logger_default "github.com/jhekau/gdown/internal/core/logs/default"
+	logger_default "github.com/jhekau/gdown/internal/pkg/logs"
 )
 
 func NewServerWithHandler( fn http.HandlerFunc ) (*http.Server, *settings) {
