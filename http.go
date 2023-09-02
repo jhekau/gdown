@@ -5,7 +5,7 @@ package gdown
  * 14 August 2023
  */
 import(
-	http_ "github.com/jhekau/gdown/internal/http"
+	http_ "github.com/jhekau/gdown/internal/service/http"
 )
 
 // graceful shutdown http server

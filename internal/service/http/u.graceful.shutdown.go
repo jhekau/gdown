@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-const logGS = `github.com/jhekau/gdown/internal/http/graceful.shutdown.go`
+const logGS = `github.com/jhekau/gdown/internal/service/http/graceful.shutdown.go`
 
 func gracefulShutdown(h *HTTP) {
 
