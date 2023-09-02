@@ -9,7 +9,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/jhekau/gdown/pkg/core/models/logger"
+	"github.com/jhekau/gdown/interfaces/logger"
 )
 
 const defStopCode = http.StatusInternalServerError
