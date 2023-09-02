@@ -26,7 +26,7 @@ func main(){
 ```Go
 import (
     "github.com/jhekau/gdown"
-    "github.com/jhekau/gdown/pkg/core/models/logger"
+    "github.com/jhekau/gdown/interfaces/logger"
 )
 
 # check implementation

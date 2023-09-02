@@ -9,7 +9,7 @@ import (
 	"os/signal"
 	"sync/atomic"
 
-	"github.com/jhekau/gdown/pkg/core/models/logger"
+	"github.com/jhekau/gdown/interfaces/logger"
 )
 
 type settings struct{
